@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html ⚡ lang="en">
-<!-- Home Page -->
+<!-- Contact Page -->
 <!-- Created by Mitchell Jaehrlich -->
 <!-- mitch@jaehrlich.ca -->
 
 <head>
   <meta charset="utf-8">
-  <title>Jaehrlich.ca</title>
+  <title>Jaehrlich.ca/Portfolio</title>
 
   <!-- Setup for AMP -->
   <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <link rel="canonical" href="https://www.jaehrlich.ca">
+  <link rel="canonical" href="https://www.jaehrlich.ca/Pages/contact.html">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <script type="application/ld+json">
           {
@@ -120,6 +120,11 @@
       box-shadow: 0px 3px 5px grey;
     }
 
+    h3 {
+        margin-left: .8em;
+        margin-bottom: -.1em;
+    }
+
     p {
       padding: 0.5em;
       margin: 0.5em;
@@ -165,6 +170,19 @@
       padding: 4px 16px 64px 16px;
     }
 
+    #contactCard {
+        background-image: url("file:///C:/Google%20Drive/09%20-%20Websites/01%20-%20Jaehrlich.ca/Pictures/Mountains.webp");
+        background-color: #eeeeee;
+        background-position: top;
+        background-size: cover;
+        color: black;
+    }
+
+    .whiteCard {
+        background-color: white;
+        padding: 2em;
+    }
+
     button { 
             background-color: #4285F4; 
             color: white; 
@@ -179,6 +197,14 @@
     button a {
       text-decoration: none;
       color: white;
+    }
+
+    .itemInfo {
+        margin-bottom: -1.5em;
+    }
+
+    .itemPic {
+        margin-left: 1em;
     }
 
   </style>
@@ -196,56 +222,35 @@
   <!-- Main Menu -->
   <amp-sidebar id="mainMenu" layout="nodisplay" side="left">
     <ul>
-      <li><a href="https://www.jaehrlich.ca/">Home</a></li>
-      <li><a href="https://www.jaehrlich.ca/Pages/portfolio.html">Portfolio</a></li>
-      <li><a href="https://www.jaehrlich.ca/Pages/techblog.html">Tech Blog</a></li>
-      <li><a href="https://www.jaehrlich.ca/Pages/contact.html">Contact</a></li>
-      <li><a href="https://www.jaehrlich.ca/Pages/about.html">About</a></li>
+        <li><a href="https://www.jaehrlich.ca/">Home</a></li>
+        <li><a href="https://www.jaehrlich.ca/Pages/portfolio.html">Portfolio</a></li>
+        <li><a href="https://www.jaehrlich.ca/Pages/techblog.html">Tech Blog</a></li>
+        <li><a href="https://www.jaehrlich.ca/Pages/contact.html">Contact</a></li>
+        <li><a href="https://www.jaehrlich.ca/Pages/about.html">About</a></li>
     </ul>
   </amp-sidebar>
 
-  <!-- Home Page Content -->
-</br></br>
-  <!-- Portfolio Card -->
-  <div class="card">
-    <h2>Welcome to my personal website</h2>
-    <amp-img
-      alt="Profile picture of Mitch Jaehrlich"
-      src="Pictures/Profile.png"
-      width="1132"
-      height="590"
-      layout="responsive"
-      data-amp-auto-lightbox-disable
-    ></amp-img>
-    <p>This website is for hosting my technical blog and portolio as a software developer.</p>
-    <p>Additionally this site is to showcase a Google AMP website architechture, optimized for fast results.</p>
-  </br>
-  <button>
-    <a href="https://www.jaehrlich.ca/Pages/portfolio.html">View Portfolio</a>
-  </button>
-  </div>
-  </br>
-
-  <!-- Technical Blog Card -->
-  <div class="card">
-    <h2>Technical Blog</h2>
-    <p>This blog is to help solidify my techniques in software development and help others looking to learn new techniques.</p>
-    </br>
-    <button>
-      <a href="#">Open Blog</a>
-    </button>
-  </div>
-  </br>
-
+  <!-- Contact Page Content -->
+    </br></br>
     <!-- Contact Card -->
-    <div class="card">
-      <h2>Contact</h2>
-      <p>Feel free to reach out to reach out with any inquiries or just to say hello.</p>
-      </br>
-      <button>
-        <a href="#">Contact Mitch</a>
-      </button>
+    <div class="card" id="contactCard">
+        <h2>Contact Card</h2>
+        <div class="whiteCard">
+            <h3>Mitch Jaehrlich</h3>
+            <p class="itemInfo">Technical Account Manager</p>
+            <p class="itemInfo">Software Developer</p>
+            <p class="itemInfo">Email: mitch@jaehrlich.ca</p>
+            <p></p>
+            </br>   
+            <button>
+                <a href="mailto:mitch@jaehrlich.ca">Send Email</a>
+            </button>
+        <div>
+
     </div>
+    </br>
+
+    
 </body>
 
 </html>
