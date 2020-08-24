@@ -26,7 +26,7 @@
 
   <!-- AMP Sidebar -->
   <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
-  
+
   <!-- AMP requires style settings to be within the HTML file -->
   <style amp-boilerplate>
     body {
@@ -151,7 +151,7 @@
       float: left;
       padding-left: .4em;
       padding-top: .1em;
-      cursor: pointer; 
+      cursor: pointer;
     }
 
     #mainMenuCenter {
@@ -165,16 +165,16 @@
       padding: 4px 16px 64px 16px;
     }
 
-    button { 
-            background-color: #4285F4; 
-            color: white; 
-            padding: 12px 24px; 
-            border: none; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            float: left;
-            margin: -16px 0px 0px 16px;
-         }
+    button {
+      background-color: #4285F4;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: left;
+      margin: -16px 0px 0px 16px;
+    }
 
     button a {
       text-decoration: none;
@@ -182,16 +182,15 @@
     }
 
     .itemInfo {
-        margin-bottom: -1.5em;
-        color: #424242;
+      margin-bottom: -1.5em;
+      color: #424242;
     }
 
     .itemPic {
-        margin-left: 1em;
+      margin-left: 1em;
     }
-
   </style>
-  <link rel="shortcut icon" href="https://www.jaehrlich.ca/Pictures/J.png">
+  <link rel="shortcut icon" href="https://www.jaehrlich.ca/Pictures/J.webp">
   <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
 </head>
 
@@ -199,7 +198,7 @@
   <!-- Header-->
   <header id="grid">
     <div id="mainMenuLeft" role="button" on="tap:mainMenu.toggle" tabindex="0" class="hamburger">☰</div>
-    <div id="mainMenuCenter" >Mitch Jaehrlich</div>
+    <div id="mainMenuCenter">Mitch Jaehrlich</div>
   </header>
 
   <!-- Main Menu -->
@@ -214,52 +213,49 @@
   </amp-sidebar>
 
   <!-- Portfolio Page Content -->
-    </br></br>
-    <!-- Portfolio Intro Card -->
-    <div class="card">
-        <h2>Portfolio</h2>
-        <p>These projects represent some of my work done in the last 5 years.
-        Programming languages include C#, SQL, HTML, CSS, XAML and more.</p>
-    </div>
-    </br>
+  </br></br>
+  <!-- Portfolio Intro Card -->
+  <div class="card">
+    <h2>Portfolio</h2>
+    <p>These projects represent some of my work done in the last 5 years.
+      Programming languages include C#, SQL, HTML, CSS, XAML and more.</p>
+  </div>
+  </br>
 
-    <!-- Portfolio Item Cards -->
-    <div class="card">
-        <h2>Jaehrlich.ca - Portfolio website</h2>
-        <p class="itemInfo">Active: 2020 - Now</p>
-        <p class="itemInfo">Languages used: AMP HTML, CSS</p>
-        </br>
-        </br>
-        <amp-img class="itemPic"
-            alt="Profile picture of Mitch Jaehrlich"
-            src="https://www.jaehrlich.ca/Pictures/J-192x192.webp"
-            width="192"
-            height="192"
-            data-amp-auto-lightbox-disable
-        ></amp-img>
-        <p>Building an ultra fast, moble-first AMP website to display my portfolio and technical blog.</p>
-        <p>With the majority of website visitors coming from moble devices, and load times turning away visitors,
-            web developers can use AMP HTML to design for fast results. This site shows how to create an extremely light weight and responsive site with minimal javascript.
-            Developed using Visual Studio Code and GitHub to push changes to the live site automatically,
-            for rapid development. Modern templating solutions, like bootstrap, are not supported in 
-            an AMP HTML site, so basic HTML and CSS is used to create a simple and effective style.
-        </p>
-        </br>
-        <button>
-        <a href="#">View on GitHub</a>
-        </button>
-    </div>
+  <!-- Portfolio Item Cards -->
+  <div class="card">
+    <h2>Jaehrlich.ca - Portfolio website</h2>
+    <p class="itemInfo">Active: 2020 - Now</p>
+    <p class="itemInfo">Languages used: AMP HTML, CSS</p>
     </br>
+    </br>
+    <amp-img class="itemPic" alt="Profile picture of Mitch Jaehrlich"
+      src="https://www.jaehrlich.ca/Pictures/J-192x192.webp" width="192" height="192" data-amp-auto-lightbox-disable>
+    </amp-img>
+    <p>Building an ultra fast, moble-first AMP website to display my portfolio and technical blog.</p>
+    <p>With the majority of website visitors coming from moble devices, and load times turning away visitors,
+      web developers can use AMP HTML to design for fast results. This site shows how to create an extremely light
+      weight and responsive site with minimal javascript.
+      Developed using Visual Studio Code and GitHub to push changes to the live site automatically,
+      for rapid development. Modern templating solutions, like bootstrap, are not supported in
+      an AMP HTML site, so basic HTML and CSS is used to create a simple and effective style.
+    </p>
+    </br>
+    <button>
+      <a href="https://github.com/MitchJaehrlich/Jaehrlich.ca">View on GitHub</a>
+    </button>
+  </div>
+  </br>
 
-    <!-- Contact Card -->
-    <div class="card">
-      <h2>Contact</h2>
-      <p>Feel free to reach out with any inquiries or just to say hello.</p>
-      </br>
-      <button>
-        <a href="https://www.jaehrlich.ca/Pages/contact.html">Contact Mitch</a>
-      </button>
-    </div>
+  <!-- Contact Card -->
+  <div class="card">
+    <h2>Contact</h2>
+    <p>Feel free to reach out with any inquiries or just to say hello.</p>
+    </br>
+    <button>
+      <a href="https://www.jaehrlich.ca/Pages/contact.html">Contact Mitch</a>
+    </button>
+  </div>
 </body>
 
 </html>
