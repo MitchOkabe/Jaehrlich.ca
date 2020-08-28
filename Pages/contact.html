@@ -114,10 +114,11 @@
         }
 
         h1 {
-            margin: 0;
             padding: 0.5em;
             background: white;
             box-shadow: 0px 3px 5px grey;
+            max-width: 550px;
+            margin: auto;
         }
 
         h3 {
@@ -168,19 +169,8 @@
         .card {
             box-shadow: 0px 3px 5px grey;
             padding: 4px 16px 64px 16px;
-        }
-
-        #contactCard {
-            background-image: url("https://www.Jaehrlich.ca/Pictures/Mountains.webp");
-            background-color: #eeeeee;
-            background-position: top;
-            background-size: cover;
-            color: black;
-        }
-
-        .whiteCard {
-            background-color: white;
-            padding: 2em;
+            max-width: 550px;
+            margin: auto;
         }
 
         button {
@@ -201,11 +191,15 @@
 
         .itemInfo {
             margin-bottom: -1.5em;
+            
         }
 
         .itemPic {
             margin-left: 1em;
+            max-width: 200px;
+            background: darkgray;
         }
+
     </style>
     <link rel="shortcut icon" href="https://www.jaehrlich.ca/Pictures/J.webp">
     <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
@@ -232,22 +226,82 @@
     <!-- Contact Page Content -->
     </br></br>
     <!-- Contact Card -->
-    <div class="card" id="contactCard">
-        <h2>Contact Card</h2>
-        <div class="whiteCard">
-            <h3>Mitch Jaehrlich</h3>
-            <p class="itemInfo">Technical Account Manager</p>
-            <p class="itemInfo">Software Developer</p>
-            <p class="itemInfo">Email: mitch@jaehrlich.ca</p>
-            <p></p>
-            </br>
+    <h1>Contact Card</h1>
+    <br>
+    <div class="card">
+        <h2>Mitch Jaehrlich</h2>
+        <p class="itemInfo">Technical Account Manager</p>
+        <p class="itemInfo">Software Developer</p>
+        <p class="itemInfo">Email: mitch@jaehrlich.ca</p>
+        <p></p>
+        <amp-img class="itemPic" alt="Picture of Mitch Jaehrlich"
+            src="https://www.jaehrlich.ca/Pictures/avatar-nobg.webp" layout="responsive" width="500" height="500">
+        </amp-img>
+        <p>Mitch Jaehrlich is creative, motivated and passionate for programming and all things computer related.
+            He is always designing new programs for employers, friends, and his own enjoyment.
+            Mitch is also a passionate audio engineer and music producer, under the name Hous3.
+            For hobbies, he enjoys photography, video/board games, and hiking.</p>
+        <br>
             <button>
-                <a href="mailto:mitch@jaehrlich.ca">Send Email</a>
-            </button>
-            <div>
+            <a href="mailto:mitch@jaehrlich.ca">Send Email</a>
+        </button>        
+    </div>
+    <br>
+    <br>
 
-            </div>
-            </br>
+    <!-- Social Cards -->
+    <h1>Social Links and More</h1>
+    <br>
+    <div class="card">
+        <h2>Linkedin</h2>
+        <amp-img class="itemPic" alt="Linkedin Logo"
+            src="https://www.jaehrlich.ca/Pictures/Linkedin.webp" layout="responsive" width="148" height="144">
+        </amp-img>
+        <br><br>
+        <button>
+            <a href="https://www.linkedin.com/in/mitchjaehrlich/">Visit Linkedin Profile</a>
+        </button>
+    </div>
+    <br>
+    <div class="card">
+        <h2>Instagram - Photography Profile</h2>
+        <p>Platform for sharing photography and videography</p>
+        </br>
+        <amp-img class="itemPic" alt="Preview of Mitch Jaehrlich's Instagram page"
+            src="https://www.jaehrlich.ca/Pictures/Instagram.webp" layout="responsive" width="635" height="631">
+        </amp-img>
+        <p>
+            Creating photographs and videos has been a hobby for many years. Instagram catalogues some
+            of my favourites to share.
+        </p>
+        </br>
+        <button>
+            <a href="https://www.instagram.com/mitchjaehrlich/">Visit Instagram</a>
+        </button>
+    </div>
+    <br>
+    <div class="card">
+        <h2>Hous3.ca - Artist Website</h2>
+        <p>A hub for sharing music and audio engineering techniques.</p>
+        </br>
+        <amp-img class="itemPic" alt="Album art for The Dreaming City by Hous3"
+            src="https://www.jaehrlich.ca/Pictures/Hous3.ca.webp" layout="responsive" width="290" height="290">
+        </amp-img>
+        <p>
+            Hous3.ca was created to showcase music and music video publications, along with the purpose of
+            expanding audio engineering knowlege by publishing technical blog posts.
+        </p>
+        <p>This site also serves as an experiment in SEO and marketing. Google, Bing and Facebook ads
+            have all been tested. Webpage content is designed to be easily searchable, sellable and qualifies for
+            ad placement.
+        </p>
+        </br>
+        <button>
+            <a href="https://hous3.ca">View Hous3.ca</a>
+        </button>
+    </div>
+    <br>
+
 
 
 </body>

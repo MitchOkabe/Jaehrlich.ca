@@ -100,8 +100,6 @@
   <style amp-custom>
     /* Basic Style */
     body {
-      width: auto;
-      margin: 0;
       padding: 1em;
     }
 
@@ -163,6 +161,8 @@
     .card {
       box-shadow: 0px 3px 5px grey;
       padding: 4px 16px 64px 16px;
+      max-width: 550px;
+      margin: auto;
     }
 
     button {
@@ -179,6 +179,10 @@
     button a {
       text-decoration: none;
       color: white;
+    }
+
+    .profilePicture {
+      max-width: 500px;
     }
   </style>
   <link rel="shortcut icon" href="https://www.jaehrlich.ca/Pictures/J.webp">
@@ -208,8 +212,9 @@
   <!-- Portfolio Card -->
   <div class="card">
     <h2>Welcome to my personal website</h2>
-    <amp-img alt="Profile picture of Mitch Jaehrlich" src="https://www.jaehrlich.ca/Pictures/Profile.webp" width="1132"
-      height="590" layout="responsive" data-amp-auto-lightbox-disable srcset="https://www.jaehrlich.ca/Pictures/Profile.webp 640w,
+    <amp-img class="profilePicture" alt="Profile picture of Mitch Jaehrlich"
+      src="https://www.jaehrlich.ca/Pictures/Profile.webp" width="1132" height="590" layout="responsive"
+      data-amp-auto-lightbox-disable srcset="https://www.jaehrlich.ca/Pictures/Profile.webp 640w,
       https://www.jaehrlich.ca/Pictures/Profile-Small.webp 420w"></amp-img>
     <p>This website is for hosting my technical blog and portolio as a software developer.</p>
     <p>Additionally this site is to showcase a Google AMP website architechture, optimized for fast results.</p>
