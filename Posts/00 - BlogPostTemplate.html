@@ -1,31 +1,18 @@
 <!DOCTYPE html>
 <html ⚡ lang="en">
-<!-- Blog Page -->
+<!-- Blog Post -->
 <!-- Created by Mitchell Jaehrlich -->
 <!-- mitch@jaehrlich.ca -->
 
 <head>
     <meta charset="utf-8">
-    <!-- Title and Meta tag for search engine optimization -->
-    <title>Programming Blog - Mitch Jaehrlich</title>
-    <meta name="Description" content="Detailed guides and thoughts on programming and other technical
-    projects. Deep dive into creating AMP websites, like this one. Learn how to build a ticket manager and more.">
+    <!-- Title and Meta data for search engine optimization -->
+    <title>TITLE</title>
+    <meta name="Description" content="DESCRIPTION">
     <!-- Setup for AMP -->
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <link rel="canonical" href="https://www.jaehrlich.ca/Pages/contact.html">
+    <link rel="canonical" href="https://www.jaehrlich.ca/Posts/FILENAME.html">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <script type="application/ld+json">
-          {
-            "@context": "http://schema.org",
-            "@type": "NewsArticle",
-            "headline": "Open-source framework for publishing content",
-            "datePublished": "2015-10-07T12:02:41Z",
-            "image": [
-              "logo.jpg"
-            ]
-          }
-        </script>
-
     <!-- AMP Sidebar -->
     <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
 
@@ -100,10 +87,7 @@
 
     <!-- Custom CSS -->
     <style amp-custom>
-        /* Basic Style */
         body {
-            width: auto;
-            margin: 0;
             padding: 1em;
         }
 
@@ -116,16 +100,11 @@
         }
 
         h1 {
+            max-width: 550px;
+            margin: auto;
             padding: 0.5em;
             background: white;
             box-shadow: 0px 3px 5px grey;
-            max-width: 550px;
-            margin: auto;
-        }
-
-        h3 {
-            margin-left: .8em;
-            margin-bottom: -.1em;
         }
 
         p {
@@ -175,11 +154,6 @@
             margin: auto;
         }
 
-        .whiteCard {
-            background-color: white;
-            padding: 2em;
-        }
-
         button {
             background-color: #4285F4;
             color: white;
@@ -195,15 +169,6 @@
             text-decoration: none;
             color: white;
         }
-
-        .itemInfo {
-            margin-bottom: -1.5em;
-        }
-
-        .itemPic {
-            margin-left: 1em;
-            background-color: darkgray;
-        }
     </style>
     <link rel="shortcut icon" href="https://www.jaehrlich.ca/Pictures/J.webp">
     <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
@@ -211,55 +176,62 @@
 
 <body>
     <!-- Header-->
-    <header id="grid">
-        <div id="mainMenuLeft" role="button" on="tap:mainMenu.toggle" tabindex="0" class="hamburger">☰</div>
-        <div id="mainMenuCenter">Mitch Jaehrlich</div>
-    </header>
+  <header id="grid">
+    <div id="mainMenuLeft" role="button" on="tap:mainMenu.toggle" tabindex="0" class="hamburger">☰</div>
+    <div id="mainMenuCenter">Mitch Jaehrlich</div>
+  </header>
 
-    <!-- Main Menu -->
-    <amp-sidebar id="mainMenu" layout="nodisplay" side="left">
-        <ul>
-            <li><a href="https://www.jaehrlich.ca/">Home</a></li>
-            <li><a href="https://www.jaehrlich.ca/Pages/portfolio.html">Portfolio</a></li>
-            <li><a href="https://www.jaehrlich.ca/Pages/techblog.html">Tech Blog</a></li>
-            <li><a href="https://www.jaehrlich.ca/Pages/contact.html">Contact</a></li>
-            <li><a href="https://www.jaehrlich.ca/Pages/about.html">About</a></li>
-        </ul>
-    </amp-sidebar>
-
-    <!-- Contact Page Content -->
-    </br></br>
-    <!-- Contact Card -->
-    <!-- Portfolio Card -->
-    <h1>Blog posts</h1>
-    </br>
-    <!-- Blog Cards -->
+  <!-- Main Menu -->
+  <amp-sidebar id="mainMenu" layout="nodisplay" side="left">
+    <ul>
+      <li><a href="https://www.jaehrlich.ca/">Home</a></li>
+      <li><a href="https://www.jaehrlich.ca/Pages/portfolio.html">Portfolio</a></li>
+      <li><a href="https://www.jaehrlich.ca/Pages/techblog.html">Tech Blog</a></li>
+      <li><a href="https://www.jaehrlich.ca/Pages/contact.html">Contact</a></li>
+      <li><a href="https://www.jaehrlich.ca/Pages/about.html">About</a></li>
+    </ul>
+  </amp-sidebar>
+  <br><br>
+    <h1>TITLE</h1>
+    <br>
     <div class="card">
-        <h2>What is Paulstretch?</h2>
-        <p class="itemInfo">Published on July 17, 2020 by Mitch Jaehrlich</p>
-        <p class="itemInfo">Source: hous3.ca</p>
-        </br>
-        </br>
-        <amp-img class="itemPic" alt="Profile picture of Mitch Jaehrlich"
-            src="https://jaehrlich.ca/Pictures/blogPic-paul1.webp" width="993" height="547" srcset="https://www.jaehrlich.ca/Pictures/blogPic-paul1.webp 640w,
-            https://www.jaehrlich.ca/Pictures/PblogPic-paul1-small.webp 420w" data-amp-auto-lightbox-disable
-            layout="responsive"></amp-img>
-        </br>
-        </br>
-        <button>
-            <a href="https://hous3.ca/what-is-paulstretch/">Read More</a>
-        </button>
+        <h2>SUBTITLE</h2>
+        <p>INTRO PARAGRAPH</p>
+        <amp-img class="profilePicture" alt="PICTURE DESCRIPTION"
+        src="https://www.jaehrlich.ca/Pictures/Profile.webp" width="1132" height="590" layout="responsive"
+        data-amp-auto-lightbox-disable srcset="https://www.jaehrlich.ca/Pictures/Profile.webp 640w,
+        https://www.jaehrlich.ca/Pictures/Profile-Small.webp 420w"></amp-img>
+        <p>BLOG POST</p>
     </div>
-    </br>
-    <!-- Contact Card -->
-    <div class="card">
-        <h2>Contact</h2>
-        <p>Feel free to reach out with any inquiries or just to say hello.</p>
-        </br>
-        <button>
-            <a href="https://www.jaehrlich.ca/Pages/contact.html">Contact Mitch</a>
-        </button>
-    </div>
+    <!-- Structured data for rich search results -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "NewsArticle",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.jaehrlich.ca/Posts/FILENAME.html"
+          },
+          "headline": "TITLE",
+          "image": [
+            "https://www.jaehrlich.ca/Pictures/FILENAME.html"
+           ],
+          "datePublished": "2015-02-05T08:00:00+08:00",
+          "dateModified": "2015-02-05T09:20:00+08:00",
+          "author": {
+            "@type": "Person",
+            "name": "Mitch Jaehrlich"
+          },
+           "publisher": {
+            "@type": "Organization",
+            "name": "Mitch Jaehrlich",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.jaehrlich.ca/Pictures/J-192x192.webp"
+            }
+          }
+        }
+        </script>
 </body>
 
 </html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html ⚡ lang="en">
+<!-- Blog Post -->
+<!-- Created by Mitchell Jaehrlich -->
+<!-- mitch@jaehrlich.ca -->
+
+<head>
+    <meta charset="utf-8">
+    <!-- Title and Meta data for search engine optimization -->
+    <title>How to Create an AMP Website</title>
+    <meta name="Description" content="Learn how to create an AMP HTML website for super fast mobile
+    performance.">
+    <!-- Setup for AMP -->
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <link rel="canonical" href="https://www.jaehrlich.ca/Posts/HowToCreateAnAMPWebsite.html">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <!-- AMP Sidebar -->
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+
+    <!-- AMP requires style settings to be within the HTML file -->
+    <style amp-boilerplate>
+        body {
+            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1, end) 0s 1 normal both
+        }
+
+        @-webkit-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-moz-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-ms-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-o-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+    </style><noscript>
+        <style amp-boilerplate>
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none
+            }
+        </style>
+    </noscript>
+
+    <!-- Custom CSS -->
+    <style amp-custom>
+        body {
+            padding: 1em;
+        }
+
+        header {
+            background: #4285F4;
+            color: white;
+            font-size: 2em;
+            margin: -.5em;
+            padding-bottom: .5em;
+        }
+
+        h1 {
+            max-width: 550px;
+            margin: auto;
+            padding: 0.5em;
+            background: white;
+            box-shadow: 0px 3px 5px grey;
+        }
+
+        p {
+            padding: 0.5em;
+            margin: 0.5em;
+        }
+
+        #mainMenu {
+            background: #4285F4;
+            color: white;
+        }
+
+        #mainMenu a {
+            text-decoration: none;
+            color: white;
+            margin: 0;
+        }
+
+        #mainMenu li {
+            list-style-type: none;
+            padding: 1em;
+            margin-left: -2em;
+            margin-right: 2em;
+        }
+
+        #grid {
+            display: block;
+        }
+
+        #mainMenuLeft {
+            float: left;
+            padding-left: .4em;
+            padding-top: .1em;
+            cursor: pointer;
+        }
+
+        #mainMenuCenter {
+            padding-left: 5em;
+            padding-top: .25em;
+            margin-bottom: -.25em;
+        }
+
+        .card {
+            box-shadow: 0px 3px 5px grey;
+            padding: 4px 16px 64px 16px;
+            max-width: 550px;
+            margin: auto;
+        }
+
+        button {
+            background-color: #4285F4;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: left;
+            margin: -16px 0px 0px 16px;
+        }
+
+        button a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .articlePicture {
+            background-color: #4285F4;
+        }
+    </style>
+    <link rel="shortcut icon" href="https://www.jaehrlich.ca/Pictures/J.webp">
+    <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
+</head>
+
+<body>
+    <!-- Header-->
+    <header id="grid">
+        <div id="mainMenuLeft" role="button" on="tap:mainMenu.toggle" tabindex="0" class="hamburger">☰</div>
+        <div id="mainMenuCenter">Mitch Jaehrlich</div>
+    </header>
+
+    <!-- Main Menu -->
+    <amp-sidebar id="mainMenu" layout="nodisplay" side="left">
+        <ul>
+            <li><a href="https://www.jaehrlich.ca/">Home</a></li>
+            <li><a href="https://www.jaehrlich.ca/Pages/portfolio.html">Portfolio</a></li>
+            <li><a href="https://www.jaehrlich.ca/Pages/techblog.html">Tech Blog</a></li>
+            <li><a href="https://www.jaehrlich.ca/Pages/contact.html">Contact</a></li>
+            <li><a href="https://www.jaehrlich.ca/Pages/about.html">About</a></li>
+        </ul>
+    </amp-sidebar>
+    <br><br>
+
+    <!-- Blog Post Body -->
+    <h1>How to Create an AMP Website</h1>
+    <br>
+    <div class="card">
+        <h2>AMP is fast to load and fast to create</h2>
+        <amp-img class="articlePicture" alt="Screenshot of an AMP website, Jaehrlich.ca"
+            src="https://www.jaehrlich.ca/Pictures/AMP-Website-wide.webp" width="402" height="223" layout="responsive"
+            data-amp-auto-lightbox-disable></amp-img>
+        <p>
+            AMP websites are great for serving up clean website content, really fast. AMP can
+            both live on it's own, or help desktop-first sites live a second life as a mobile-first website.
+        </p>
+        <p>
+            The biggest optimization in speed, compared to desktop-first sites, comes from restricting
+            our design desisions to the simple frameworks of HTML, CSS and JavaScript. With that
+            in mind, it's also fast to setup.
+        </p>
+        <p>
+            Follow these 6 steps to get up and running.
+        </p>
+        <br>
+        <button>
+            <a href="HTML FILE PATH"">Download Example HTML file.</a>
+        </button>
+    </div>
+    <br>
+
+    <div class="card">
+        <h2 id="step1">Create a regular HTML file</h2>
+        <p>
+            Start by creating a regular HTML file and add the word 'amp', or the symbol '⚡',
+            in the html tag. 
+        </p>
+        <p>
+            AMP uses the <code>&lt;html ⚡ lang="en"&gt;</code> markup to label an HTML page as an
+            AMP page.
+            Then, add the usual <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> sections.
+        </p>
+        <amp-img class="articlePicture" alt="Screenshot of completing step 1"
+            src="https://www.jaehrlich.ca/Posts/01 - HowToCreateAnAMPWebsite/Pictures/Step1.webp" width="659" height="231" layout="responsive"
+            data-amp-auto-lightbox-disable></amp-img>
+        <p>
+        <h2 id="step2">Add the required AMP code to the Head element</h2>
+        <h2 id="step3">Add the AMP boilderplate code to the Head element</h2>
+        <h2 id="step4">Add your own style to the page</h2>
+        <h2 id="step5">Finish up your page with content in the Body</h2>
+        <h2 id="step6">Validate your page and publish!</h2>
+    </div>
+    <!-- Structured data for rich search results -->
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "HowTo",
+          "name": "How to create an AMP website",
+          "description": "Learn how to create an AMP HTML website for super fast mobile performance.",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://www.jaehrlich.ca/Pictures/AMP-Website.webp",
+            "width": "659",
+            "height": "231"
+          },
+          "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": "0"
+          },
+          "step": [
+            {
+              "@type": "HowToStep",
+              "url": "https://www.jaehrlich.ca/Posts/HowToCreateAnAMPWebsite.html#step1",
+              "name": "Create a regular HTML file",
+              "itemListElement": [{
+                "@type": "HowToDirection",
+                "text": "Start by creating a regular html file and add the word 'amp' in the html tag"
+              }],
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://www.jaehrlich.ca/Posts/01 - HowToCreateAnAMPWebsite/Pictures/Step1.webp",
+                "height": "406",
+                "width": "305"
+              }              
+            }, {
+              "@type": "HowToStep",
+              "name": "Add the required AMP code to the Head element",
+              "url": "https://www.jaehrlich.ca/Posts/HowToCreateAnAMPWebsite.html#step2",
+              "itemListElement": [{
+                "@type": "HowToDirection",
+                "text": "Add the AMP script, a refrence to the non-amp page, and some meta information"
+              }]
+            }, {
+                "@type": "HowToStep",
+                "name": "Add the AMP boilderplate code to the Head element",
+                "url": "https://www.jaehrlich.ca/Posts/HowToCreateAnAMPWebsite.html#step3",
+                "itemListElement": [{
+                  "@type": "HowToDirection",
+                  "text": "Include the required boilerplate sytle code to the Head element."
+                }]
+              }, {
+                "@type": "HowToStep",
+                "name": "Add your own style to the page",
+                "url": "https://www.jaehrlich.ca/Posts/HowToCreateAnAMPWebsite.html#step4",
+                "itemListElement": [{
+                  "@type": "HowToDirection",
+                  "text": "No CSS pages allowed, so you'll need to add your custom style to the head element with a 'amp-custom' attribute"
+                }]
+              }, {
+                "@type": "HowToStep",
+                "name": "Finish up your page with content in the Body",
+                "url": "https://www.jaehrlich.ca/Posts/HowToCreateAnAMPWebsite.html#step5",
+                "itemListElement": [{
+                  "@type": "HowToDirection",
+                  "text": "Finish up your page by adding your own content within the HTML Body. Keep in mind, some standard HTML isn't allowed in AMP pages."
+                }]
+              }, {
+                "@type": "HowToStep",
+                "name": "Validate your page and publish!",
+                "url": "https://www.jaehrlich.ca/Posts/HowToCreateAnAMPWebsite.html#step6",
+                "itemListElement": [{
+                  "@type": "HowToDirection",
+                  "text": "Slap '#development=1' onto the end of your webpage address and verify it's ready for the world to see."
+                }]
+              }
+          ],
+          "totalTime": "P1D"
+        }
+        </script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "NewsArticle",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.jaehrlich.ca/Posts/HowToCreateAnAMPWebsite.html"
+          },
+          "headline": "How to Create an AMP Website",
+          "image": [
+            "https://www.jaehrlich.ca/Pictures/AMP-Website.webp"
+           ],
+          "datePublished": "2020-08-29T11:44:00-07:00",
+          "dateModified": "2020-08-29T11:44:00-07:00",
+          "author": {
+            "@type": "Person",
+            "name": "Mitch Jaehrlich"
+          },
+           "publisher": {
+            "@type": "Organization",
+            "name": "Mitch Jaehrlich",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.jaehrlich.ca/Pictures/J-192x192.webp"
+            }
+          }
+        }
+        </script>
+</body>
+
+</html>
