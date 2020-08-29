@@ -174,6 +174,12 @@
         .articlePicture {
             background-color: #4285F4;
         }
+
+        code {
+            background-color: lightgray;
+            font-weight: bold;
+            font-family: monospace;
+        }
     </style>
     <link rel="shortcut icon" href="https://www.jaehrlich.ca/Pictures/J.webp">
     <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
@@ -226,7 +232,7 @@
     <br>
 
     <div class="card">
-        <h2 id="step1">Create a regular HTML file</h2>
+        <h2 id="step1">Step 1: Create a regular HTML file</h2>
         <p>
             Start by creating a regular HTML file and add the word 'amp', or the symbol '⚡',
             in the html tag. 
@@ -239,8 +245,43 @@
         <amp-img class="articlePicture" alt="Screenshot of completing step 1"
             src="https://www.jaehrlich.ca/Posts/01 - HowToCreateAnAMPWebsite/Pictures/Step1.webp" width="659" height="231" layout="responsive"
             data-amp-auto-lightbox-disable></amp-img>
+            <br> <br>
+            <button>
+                <a href="#step2">Continue to step 2</a>
+            </button>
+    </div>
+    <br>
+
+    <div class="card">
+        <h2 id="step2">Step 2: Add the required AMP code to the Head element</h2>
         <p>
-        <h2 id="step2">Add the required AMP code to the Head element</h2>
+            The first child of the <code>&lt;head&gt;</code> tag needs to be <code>&lt;meta charset="utf-8"&gt;</code> to signify the encoding.
+        </p>
+        <p>
+            Next, load the JavaScript library for AMP by adding a script tag somewhere after:
+            <code>&lt;script async src="https://cdn.ampproject.org/v0.js"&gt;&lt;/script&gt;</code>
+        </p>
+        <p>
+            After that, either add a link to the desktop version of the site, or a link to itself:
+        </p>
+        <p>
+            <code>&lt;link rel="canonical" href="www.yourwebsite.com/Example.HTML"&gt;</code>
+        </p>
+        <p>
+            And finally, define a responsive viewport by adding:
+        </p>
+        <p>
+            <code>&lt;meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"&gt;</code>
+        </p>
+        <amp-img class="articlePicture" alt="Screenshot of completing step 2"
+            src="https://www.jaehrlich.ca/Posts/01 - HowToCreateAnAMPWebsite/Pictures/Step2.webp" width="752" height="212" layout="responsive"
+            data-amp-auto-lightbox-disable></amp-img>
+            <br> <br>
+            <button>
+                <a href="https://www.jaehrlich.ca/Posts/01 - HowToCreateAnAMPWebsite/Share/Example2.HTML">Download HTML Example of Step 2</a>
+            </button>
+    </div>
+    <div class="card">
         <h2 id="step3">Add the AMP boilderplate code to the Head element</h2>
         <h2 id="step4">Add your own style to the page</h2>
         <h2 id="step5">Finish up your page with content in the Body</h2>
