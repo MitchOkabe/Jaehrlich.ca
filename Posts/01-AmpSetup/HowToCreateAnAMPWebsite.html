@@ -218,7 +218,7 @@
         </p>
         <p>
             The biggest optimization in speed, compared to desktop-first sites, comes from restricting
-            our design desisions to the simple frameworks of HTML, CSS and JavaScript. With that
+            our design desisions to the simple frameworks of HTML and CSS. With that
             in mind, it's also fast to setup.
         </p>
         <p>
@@ -226,7 +226,7 @@
         </p>
         <br>
         <button>
-            <a href="https://www.jaehrlich.ca/Posts/01-AmpSetup/Share/Example.zip" download="Example.HTML" target="_blank">Download Example HTML file.</a>
+            <a href="https://www.jaehrlich.ca/Posts/01-AmpSetup/Share/Example.zip" download="Example.zip" target="_blank">Download Example 1 HTML file.</a>
         </button>
     </div>
     <br>
@@ -280,23 +280,95 @@
             </button>
             <br> <br> <br>
             <button>
-                <a href="https://www.jaehrlich.ca/Posts/01-AmpSetup/Share/Example2.zip" download="Example2.HTML" target="_blank">Download HTML Example of Step 2</a>
+                <a href="https://www.jaehrlich.ca/Posts/01-AmpSetup/Share/Example2.zip" download="Example2.zip" target="_blank">Download HTML Example of Step 2</a>
             </button>
     </div>
     <br>
 
     <div class="card">
-        <h2 id="step3">Add the AMP boilderplate code to the Head element</h2>
+        <h2 id="step3">Step 3: Add the AMP boilderplate code to the Head element</h2>
+        <p>
+            Add the boilerplate code, towards the bottom of the head tag, to hide all content,
+            until the AMP JavaScript is done loading. And don't worry, this code can live as a single line, to save space
+            when editing your AMP page.
+        </p>
+        <p>
+            <code>&lt;style amp-boilerplate&gt;body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}&lt;/style&gt;&lt;noscript&gt;&lt;style amp-boilerplate&gt;body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}&lt;/style&gt;&lt;/noscript&gt;</code>
+        </p>
+        <amp-img class="articlePicture" alt="Screenshot of completing step 3"
+            src="https://www.jaehrlich.ca/Posts/01-AmpSetup/Pictures/Step3.webp" width="812" height="225" layout="responsive"></amp-img>
+            <br> <br>
+            <button >
+                <a href="#step4">Continue to Step 4</a>
+            </button>
+            <br> <br> <br>
+            <button>
+                <a href="https://www.jaehrlich.ca/Posts/01-AmpSetup/Share/Example3.zip" download="Example3.zip" target="_blank">Download HTML Example of Step 3</a>
+            </button>
     </div>
     <br>
 
     <div class="card">
-        <h2 id="step4">Add your own style to the page</h2>
+        <h2 id="step4">Step 4: Add your own style to the page</h2>
+        <p>
+            Although CSS files aren't allowed, you are able to add a <code>&lt;style amp-custom&gt;</code> tag to the head
+            to customize your own styles. In the exampe, I customize the H1 element to look like a card.
+        </p>
+        <p>
+            <code>
+                &lt;style amp-custom&gt;
+                body {
+                    padding: 1em;
+                }
+        
+                h1 {
+                    max-width: 550px;
+                    margin: auto;
+                    padding: 0.5em;
+                    box-shadow: 0px 3px 5px grey;
+                }&lt;/style&gt;
+            </code>
+        </p>
+        <amp-img class="articlePicture" alt="Screenshot of completing step 4"
+            src="https://www.jaehrlich.ca/Posts/01-AmpSetup/Pictures/Step4.webp" width="1008" height="495" layout="responsive"></amp-img>
+        <br> <br>
+        <button >
+            <a href="#step5">Continue to Step 5</a>
+        </button>
+        <br> <br> <br>
+        <button>
+            <a href="https://www.jaehrlich.ca/Posts/01-AmpSetup/Share/Example4.zip" download="Example3.zip" target="_blank">Download HTML Example of Step 3</a>
+        </button>
     </div>
     <br>
 
     <div class="card">
-        <h2 id="step5">Finish up your page with content in the Body</h2>
+        <h2 id="step5">Part 5: Finish up your page with content in the Body</h2>
+        <p>
+            Although most usual HTML content is available in an AMP page, there are some
+            restrictions, <a href="https://amp.dev/documentation/guides-and-tutorials/learn/spec/amphtml/?format=websites#html-tags">more info here</a>. With all the required AMP code set,
+            feel free to start adding HTML content as usual, but keep in mind some restrictions.
+        </p>
+        <p>
+            For instance, instead of using an <code>&ltimg></code> tag, you will need to use an
+            <code>&ltamp-img></code> tag, with an end tag <code>&lt/amp-img></code>. A height and
+            width propery is also required, along with an alt tag. Here's an example:
+        </p>
+        <p>
+            <code>&ltamp-img alt="Extremely descriptive description of the image"
+                src="https://www.jaehrlich.ca/Pictures/Mountains.webp" 
+                width="1892" height="1060" layout="responsive">&lt/amp-img></code>
+        </p>
+        <amp-img class="articlePicture" alt="Screenshot of completing step 4"
+            src="https://www.jaehrlich.ca/Posts/01-AmpSetup/Pictures/Step4.webp" width="1008" height="495" layout="responsive"></amp-img>
+        <br> <br>
+        <button >
+            <a href="#step5">Continue to Step 5</a>
+        </button>
+        <br> <br> <br>
+        <button>
+            <a href="https://www.jaehrlich.ca/Posts/01-AmpSetup/Share/Example4.zip" download="Example3.zip" target="_blank">Download HTML Example of Step 3</a>
+        </button>
     </div>
     <br>
 
