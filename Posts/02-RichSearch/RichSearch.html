@@ -46,7 +46,7 @@
     <h1>SEO - What are Rich Search Results?</h1>
     <br>
     <div class="card">
-        <h2>Help Search Engines Understand You A Little Better</h2>
+        <h2>Help Search Engines Understand Your Website a Little Better</h2>
         <p>Rich search results are features of search engines that provide the searcher with
             extra pieces of information about a website. These features could look like recipe cards,
             user reviews or step by step guides that apear within the list of other search results.
@@ -60,11 +60,165 @@
         <amp-img class="profilePicture" alt="Example of Rich Search Results for an Article"
         src="https://www.jaehrlich.ca/Posts/02-RichSearch/Pictures/ArticleExample.webp" width="395" height="245" layout="responsive"
         data-amp-auto-lightbox-disable></amp-img>
+        <p>
+            These features are meant to show up at the top of a search, or even in the Google
+            assistant. Because of this, the linked web pages need to engage the user
+            at face value, and once clicked, be quick to load.
+            To optimize for speed, these examples are going to leverage the AMP architecture. 
+            <a href="https://www.jaehrlich.ca/Posts/01-AmpSetup/HowToCreateAnAMPWebsite.html">
+            More info on adding AMP pages to your website here.
+            </a>
+        </p>
 
         <h2>How do you create rich search for your article?</h2>
         <p>
-
+            Start by gathering the information about your article. You will need to provide data
+            for the following properties:
         </p>
+        <ul>
+            <li>Article author</li>
+            <li>Article publisher</li>
+            <li>Date published</li>
+            <li>Headline</li>
+            <li>Main article image</li>
+            <li>Publisher logo image</li>
+        </ul>
+        <p>
+            Then we will write the JSON-LD script anywhere in our html file.
+        </p>
+        <div class="codeBox">
+            <p>
+                <code>
+                    &lt;script type=&quot;application/ld+json&quot;&gt;
+                </code>
+            </P>
+            <p>Now we can start to fill in the data structure with your article data.
+                Set the <code>@context</code> to "https://schema.org". The <code>@type</code>
+                to "NewsArticle". And mark the <code>@mainEntityOfPage</code> with your web page
+                url.
+            </p>
+            <p>
+                <code>{<br>
+                    &nbsp;&quot;@context&quot;: &quot;https://schema.org&quot;,<br>
+                    &nbsp;&quot;@type&quot;: &quot;NewsArticle&quot;,<br>
+                    &nbsp;&quot;mainEntityOfPage&quot;: {<br>
+                    &nbsp;&quot;@type&quot;: &quot;WebPage&quot;,<br>
+                    &nbsp;&quot;@id&quot;: &quot;https://YOUR-WEBSITE.com/ARTICLE-URL-HERE&quot;<br>
+                },<br></code>
+            </p>
+            <p>
+                Then we can define the article <code>headline</code>, <code>datePublished</code>,
+                <code>author</code>, <code>publisher</code> and a main <code>image</code> to be
+                displayed with the headline.
+            </p>
+            <p>
+                <code>         
+                    &quot;headline&quot;: &quot;ARTICLE HEADLINE&quot;,<br>
+                    &quot;image&quot;:&quot;https://YOUR-WEBSITE.com/IMAGE-URL-HERE&quot;,<br>
+                    &quot;datePublished&quot;: &quot;2020-12-31T23:59:59-07:00&quot;,<br>
+                    &quot;dateModified&quot;: &quot;2020-12-31T23:59:59-07:00&quot;,<br>
+                    &quot;author&quot;: {<br>
+                        &nbsp;&quot;@type&quot;: &quot;Person&quot;,<br>
+                        &nbsp;&quot;name&quot;: &quot;YOUR NAME HERE&quot;<br>
+                    },<br>
+                    &quot;publisher&quot;: {<br>
+                        &nbsp;&quot;@type&quot;: &quot;Organization&quot;,<br>
+                        &nbsp;&quot;name&quot;: &quot;YOUR COMPANY HERE&quot;,<br>
+                        &nbsp;&quot;logo&quot;: {<br>
+                            &nbsp;&nbsp;&quot;@type&quot;: &quot;ImageObject&quot;,<br>
+                            &nbsp;&nbsp;&quot;url&quot;: &quot;https://YOUR-WEBSITE.com/LOGO-IMAGE-URL-HERE&quot;<br>
+                        &nbsp;}<br>
+                    }&lt;/script&gt;<br>
+                </code>
+            </p>
+            <p>
+                With all the code ready, you can vailidate it with Google's 
+                <a href="https://search.google.com/test/rich-results">Rich Results Test</a>.
+            </p>
+            <!-- RichSearchArticle.webp -->
+            <amp-img class="profilePicture" alt="JASON LD code for Rich Search Results of an Article"
+        src="https://www.jaehrlich.ca/Posts/02-RichSearch/Pictures/RichSearchArticle.webp" width="625" height="548" layout="responsive"
+        data-amp-auto-lightbox-disable></amp-img>
+        </div>
+        <h2>More examples</h2>
+        <p>
+            This page is made with structured data for an article as well. Take a look at the
+            code on GitHub, and feel free to use it as a starting point or template.
+        </p>
+        <br>
+        <button><a href="https://github.com/MitchJaehrlich/Jaehrlich.ca/blob/master/Posts/02-RichSearch/RichSearch.html">
+        View Page on GitHub</a></button>
+        <br><br>
+        <p>
+            Also the blog post "<a href="https://jaehrlich.ca/Posts/01-AmpSetup/HowToCreateAnAMPWebsite.html">
+            How to Create an AMP Website</a>" is using structured data of both an Article 
+            as well as a How-To Guide. That page is also up on GitHub to take a peak at the code.
+        </p>
+        <br>
+        <button>
+            <a href="https://github.com/MitchJaehrlich/Jaehrlich.ca/blob/master/Posts/01-AmpSetup/HowToCreateAnAMPWebsite.html">
+            View Page on GitHub</a>
+        </button>
+        <br><br>
+        <h2>Implementing Other Types of Structured Data</h2>
+        <p>
+            There are many types of structured data that Google will use to enhance search and other
+            Google products, like assistant. Google provides some examples to set them up
+            <a href="https://developers.google.com/search/reference/overview">here</a>.
+        </p>
+        <p>
+            Here is a list of the types of structured data you can implement right now. Sureley more
+            will be added over time:
+        </p>
+        <ul>
+            <li><a href="https://developers.google.com/search/docs/data-types/article">Article</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/book">Book</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/breadcrumb">Breadcrumb</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/carousel">Carousel</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/course">Course</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/special-announcements">COVID-19 announcements</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/critic-review">Critic review</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/dataset">Dataset</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/employer-rating">Employer Aggregate Rating</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/estimated-salary">Estimated salary</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/event">Event</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/factcheck">Fact Check</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/faqpage">FAQ</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/home-activities">Home Activities</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/how-to">How-to</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/image-license-metadata">Image License</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/job-posting">Job Posting</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/job-training">Job Training</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/local-business">Local Business</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/logo">Logo</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/movie">Movie</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/product">Product</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/qapage">Q&amp;A</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/recipe">Recipe</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/review-snippet">Review snippet</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Sitelinks search box</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/software-app">Software App</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/speakable">Speakable</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/paywalled-content">Subscription and paywalled content</a></li>
+            <li><a href="https://developers.google.com/search/docs/data-types/video">Video</a></li>
+        </ul>
+    </div>
+    <br>
+
+    <div class="card">
+        <h2>Get coding!</h2>
+        <p>
+            Thanks for reading. I hope your AMP sites turn out great. Let me know if you have
+            any questions.
+        </p>
+        <br>
+        <button>
+            <a href="https://www.jaehrlich.ca/Pages/contact.html">Contact Mitch</a>
+        </button>
+        <br><br><br>
+        <button>
+            <a href="https://www.jaehrlich.ca/Pages/techblog.html">Read More Blogs</a>
+        </button>
     </div>
     <!-- Structured data for rich search results -->
     <script type="application/ld+json">
@@ -76,11 +230,9 @@
             "@id": "https://www.jaehrlich.ca/Posts/02-RichSearch/RichSearch.html"
           },
           "headline": "SEO - What are Rich Search Results",
-          "image": [
-            "https://www.jaehrlich.ca/Posts/02-RichSearch/Pictures/RichSearch.webp"
-           ],
-          "datePublished": "2020-09-07T08:00:00+08:00",
-          "dateModified": "2020-09-07T09:20:00+08:00",
+          "image": "https://www.jaehrlich.ca/Posts/02-RichSearch/Pictures/RichSearch.webp",
+          "datePublished": "2020-09-07T08:00:00-07:00",
+          "dateModified": "2020-09-07T08:00:00-07:00",
           "author": {
             "@type": "Person",
             "name": "Mitch Jaehrlich"
