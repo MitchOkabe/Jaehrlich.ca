@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html ⚡ lang="en">
+<!-- Blog Post -->
+<!-- Created by Mitchell Jaehrlich -->
+<!-- mitch@jaehrlich.ca -->
+
+<head>
+    <meta charset="utf-8">
+    <!-- Title and Meta data for search engine optimization -->
+    <title>How to Set Up and Remove Folder Redirection on Windows Server</title>
+    <meta name="Description" content="How to guide for setting up and removing folder redirection in a
+    Windows Server network">
+    <!-- Setup for AMP -->
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <link rel="canonical" href="https://www.jaehrlich.ca/Posts/03-RemoveingRoamingProfiles/RemoveingRoamingProfiles.html">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <!-- AMP Sidebar -->
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+
+    <!-- AMP requires style settings to be within the HTML file -->
+    <style amp-boilerplate> body { -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both; -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both; -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both; animation: -amp-start 8s steps(1, end) 0s 1 normal both } @-webkit-keyframes -amp-start { from { visibility: hidden } to { visibility: visible } } @-moz-keyframes -amp-start { from { visibility: hidden } to { visibility: visible } } @-ms-keyframes -amp-start { from { visibility: hidden } to { visibility: visible } } @-o-keyframes -amp-start { from { visibility: hidden } to { visibility: visible } } @keyframes -amp-start { from { visibility: hidden } to { visibility: visible } } </style><noscript> <style amp-boilerplate> body { -webkit-animation: none; -moz-animation: none; -ms-animation: none; animation: none } </style> </noscript>
+    <!-- Custom CSS -->
+    <style amp-custom> body { padding: 1em; } header { background: #4285F4; color: white; font-size: 2em; margin: -.5em; padding-bottom: .5em; } h1 { max-width: 550px; margin: auto; padding: 0.5em; background: white; box-shadow: 0px 3px 5px grey; } p { padding: 0.5em; margin: 0.5em; } #mainMenu { background: #4285F4; color: white; } #mainMenu a { text-decoration: none; color: white; margin: 0; } #mainMenu li { list-style-type: none; padding: 1em; margin-left: -2em; margin-right: 2em; } #grid { display: block; } #mainMenuLeft { float: left; padding-left: .4em; padding-top: .1em; cursor: pointer; } #mainMenuCenter { padding-left: 5em; padding-top: .25em; margin-bottom: -.25em; } .card { box-shadow: 0px 3px 5px grey; padding: 4px 16px 64px 16px; max-width: 550px; margin: auto; } button { background-color: #4285F4; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; float: left; margin: -16px 0px 0px 16px; } button a { text-decoration: none; color: white; } .articlePicture { background-color: #4285F4; } code { background-color: lightgray; font-weight: bold; font-family: monospace; } </style>
+    <link rel="shortcut icon" href="https://www.jaehrlich.ca/Pictures/J.webp">
+    <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
+</head>
+
+<body>
+    <!-- Header-->
+  <header id="grid">
+    <div id="mainMenuLeft" role="button" on="tap:mainMenu.toggle" tabindex="0" class="hamburger">☰</div>
+    <div id="mainMenuCenter">Mitch Jaehrlich</div>
+  </header>
+
+  <!-- Main Menu -->
+  <amp-sidebar id="mainMenu" layout="nodisplay" side="left">
+    <ul>
+      <li><a href="https://www.jaehrlich.ca/">Home</a></li>
+      <li><a href="https://www.jaehrlich.ca/Pages/portfolio.html">Portfolio</a></li>
+      <li><a href="https://www.jaehrlich.ca/Pages/techblog.html">Tech Blog</a></li>
+      <li><a href="https://www.jaehrlich.ca/Pages/contact.html">Contact</a></li>
+      <li><a href="https://www.jaehrlich.ca/Pages/about.html">About</a></li>
+    </ul>
+  </amp-sidebar>
+  <br><br>
+    <h1>How to Set Up and Remove Folder Redirection</h1>
+    <br>
+    <div class="card">
+        <h2>Why would you want a roaming profile?</h2>
+        <amp-img class="articlePicture" alt="Screenshot of a roaming profile being created"
+            src="https://www.jaehrlich.ca/Posts/03-RemoveingRoamingProfiles/Pictures/HeroImage.webp" width="1131" height="754" layout="responsive"
+            data-amp-auto-lightbox-disable></amp-img>
+        <p>
+            Folder redirection is a classic feature of running a Windows Server enviroment.
+            But since it's inception, there have been new inovations leveraging
+            cloud services. OneDrive and Intune for Azure AD allows live profile syncing to any
+            device across the world. All you need is an internet connection, enabling a smooth transition
+            to working from home.
+        </p>
+        <p>
+            If you want to upgrade to a modern version of folder redirection, you'll need to remove existing
+            redirection systems. This guide will show you how your classic folder recirecion was
+            likely set up, so you know exactly how to tear it down for an online future.
+        </p>
+    </div>
+    <br>
+
+    <div class="card">
+        <h2 id="step1">Step 1: Create a Shared Folder on the Server</h2>
+        <h4>Create the folder</h4>
+        <p>
+            Start by creating a shared folder on the server. This is where you will be storing all
+            your user's redirected folder content. You will want to set this up close to the root, in case
+            long file names become an issue.
+        </p>
+        <p>
+            In our example, we wil create the directory "C:\Profile$\". The appended $ symbol sets the 
+            shared folder as "hidden", so it won't show up in File Explorer lists, and must be
+            explicitly bowsed to. In this case, it also functions as the 's' in 'Profiles'.
+        </p>
+        <amp-img class="articlePicture" alt="Screenshot of completing step 1"
+        src="https://www.jaehrlich.ca/Posts/03-RemoveingRoamingProfiles/Pictures/Step1.webp" width="745" height="414" layout="responsive"></amp-img>
+
+        <h4>Setup the folder permissions</h4>
+        <p>
+            Right-click the folder, select Properties, open the Security tab, then click Advanced. With the
+            Advanced Security Settings page open, remove access to everything, except System, Administrators,
+            and Creator. Then add the user group for who you want the folder redirection policy to apply. 
+        </p>
+        <p>
+            Click the drop-down box next to Applies To, and select This Folder Only.
+            Then click Show Advanced Permissions, and give your users the following permissions:
+            <ul>
+                <li>List Folder</li>
+                <li>Read attributes</li>
+                <li>Create Folders</li>
+                <li>Read Permissions</li>
+            </ul>
+        </p>
+
+            <button>
+                <a href="#step2">Continue to Step 2</a>
+            </button>
+    </div>
+    <br>
+
+    <div class="card">
+        <h2 id="step2">Step 2: Create a Folder Redirection GPO</h2>
+        
+        <p>
+            Start by opening gpedit.exe from searching the start menu.
+            Right click an OU that you want folder redirection to apply to, and
+            select Create a GPO, and give it a name.
+        </p>
+        <p>
+            Go to the Scope tab and remove Authenticated Users from Security Filtering.
+            Then add the Folder Redirection user group. And then go to the Delegation
+            tab and add Authenticated Users with Read permissions.
+        </p>
+        <p>
+            Right click the GPO and select Edit. Go to User Configuration -> Policies -> Windows Settings
+            -> Folder Redirection. Right click a folder you want to redirect, and select Properties.
+            In the drop-down menu next to Setting, select Basic. For Target Folder Location, select
+            "Create a folder for each user under the root path". And for the Root Path, enter
+            the path to your shared folder in step 1. e.g. <code>\\Server\Profile$</code>
+        </p>
+
+        <amp-img class="articlePicture" alt="Screenshot of completing step 2"
+            src="https://www.jaehrlich.ca/Posts/03-RemoveingRoamingProfiles/Pictures/Step2.webp" width="903" height="560" layout="responsive"></amp-img>
+            <br> <br>
+            <button >
+                <a href="#step3">Continue to Step 3</a>
+            </button>
+    </div>
+    <br>
+
+    <div class="card">
+        <h2 id="step3">Step 3: Bask in the Glory of Folder Redirection</h2>
+        <p>
+            Over time, the users computers in your OU will catch on to the changes and start
+            moving their files over to the server in the background. The user will be none
+            the wiser, until they start getting error messages, when they take their computer away
+            from the network.
+        </p>
+        <p>
+            To jump start the process, you may want to send a <code>gpupdate /force</code> via
+            Command Prompt.
+        </p>
+        <amp-img class="articlePicture" alt="Screenshot of completing step 3"
+            src="https://www.jaehrlich.ca/Posts/03-RemoveingRoamingProfiles/Pictures/Step3.webp" width="812" height="225" layout="responsive"></amp-img>
+            <br> <br>
+    </div>
+    <br>
+
+    <div class="card">
+        <h2>Windows Server is No Match for Your Google-fu</h2>
+        <p>
+            Thanks for reading. I hope your Folder Redirection deployment or destruction goes well. Let me know if you have
+            any questions.
+        </p>
+        <br>
+        <button>
+            <a href="https://www.jaehrlich.ca/Pages/contact.html">Contact Mitch</a>
+        </button>
+        <br><br><br>
+        <button>
+            <a href="https://www.jaehrlich.ca/Pages/techblog.html">Read More Blogs</a>
+        </button>
+    </div>
+    <!-- Structured data for rich search results -->
+    <script type="application/ld+json"> { "@context": "http://schema.org", "@type": "HowTo", "name": "How to create an AMP website", "description": "Learn how to create an AMP HTML website for super fast mobile performance.", "image": { "@type": "ImageObject", "url": "https://www.jaehrlich.ca/Posts/01-AmpSetup/Pictures/Coding.webp", "width": "1131", "height": "754" }, "estimatedCost": { "@type": "MonetaryAmount", "currency": "USD", "value": "0" }, "step": [ { "@type": "HowToStep", "url": "https://www.jaehrlich.ca/Posts/01-AmpSetup/HowToCreateAnAMPWebsite.html#step1", "name": "Create a regular HTML file", "itemListElement": [{ "@type": "HowToDirection", "text": "Start by creating a regular html file and add the word 'amp' in the html tag" }], "image": { "@type": "ImageObject", "url": "https://www.jaehrlich.ca/Posts/01-AmpSetup/Pictures/Step1.webp", "height": "406", "width": "305" } }, { "@type": "HowToStep", "name": "Add the required AMP code to the Head element", "url": "https://www.jaehrlich.ca/Posts/01-AmpSetup/HowToCreateAnAMPWebsite.html#step2", "itemListElement": [{ "@type": "HowToDirection", "text": "Add the AMP script, a refrence to the non-amp page, and some meta information" }], "image": { "@type": "ImageObject", "url": "https://www.jaehrlich.ca/Posts/01-AmpSetup/Pictures/Step2.webp", "height": "406", "width": "305" } }, { "@type": "HowToStep", "name": "Add the AMP boilderplate code to the Head element", "url": "https://www.jaehrlich.ca/Posts/01-AmpSetup/HowToCreateAnAMPWebsite.html#step3", "itemListElement": [{ "@type": "HowToDirection", "text": "Include the required boilerplate sytle code to the Head element." }], "image": { "@type": "ImageObject", "url": "https://www.jaehrlich.ca/Posts/01-AmpSetup/Pictures/Step3.webp", "height": "406", "width": "305" } }, { "@type": "HowToStep", "name": "Add your own style to the page", "url": "https://www.jaehrlich.ca/Posts/01-AmpSetup/HowToCreateAnAMPWebsite.html#step4", "itemListElement": [{ "@type": "HowToDirection", "text": "No CSS pages allowed, so you'll need to add your custom style to the head element with a 'amp-custom' attribute" }], "image": { "@type": "ImageObject", "url": "https://www.jaehrlich.ca/Posts/01-AmpSetup/Pictures/Step4.webp", "height": "406", "width": "305" } }, { "@type": "HowToStep", "name": "Finish up your page with content in the Body", "url": "https://www.jaehrlich.ca/Posts/01-AmpSetup/HowToCreateAnAMPWebsite.html#step5", "itemListElement": [{ "@type": "HowToDirection", "text": "Finish up your page by adding your own content within the HTML Body. Keep in mind, some standard HTML isn't allowed in AMP pages." }], "image": { "@type": "ImageObject", "url": "https://www.jaehrlich.ca/Posts/01-AmpSetup/Pictures/Step5.webp", "height": "406", "width": "305" } }, { "@type": "HowToStep", "name": "Validate your page and publish!", "url": "https://www.jaehrlich.ca/Posts/01-AmpSetup/HowToCreateAnAMPWebsite.html#step6", "itemListElement": [{ "@type": "HowToDirection", "text": "Slap '#development=1' onto the end of your webpage address and verify it's ready for the world to see." }], "image": { "@type": "ImageObject", "url": "https://www.jaehrlich.ca/Posts/01-AmpSetup/Pictures/Step6.webp", "height": "406", "width": "305" } } ], "totalTime": "P1H" } </script>
+    <script type="application/ld+json"> { "@context": "https://schema.org", "@type": "NewsArticle", "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.jaehrlich.ca/Posts/01-AmpSetup/HowToCreateAnAMPWebsite.html" }, "headline": "How to Create an AMP Website", "image": [ "https://www.jaehrlich.ca/Posts/01-AmpSetup/Pictures/Coding.webp" ], "datePublished": "2020-08-29T11:44:00-07:00", "dateModified": "2020-08-29T11:44:00-07:00", "author": { "@type": "Person", "name": "Mitch Jaehrlich" }, "publisher": { "@type": "Organization", "name": "Mitch Jaehrlich", "logo": { "@type": "ImageObject", "url": "https://www.jaehrlich.ca/Pictures/J-192x192.webp" } } } </script>
+
+</body>
+
+</html>
