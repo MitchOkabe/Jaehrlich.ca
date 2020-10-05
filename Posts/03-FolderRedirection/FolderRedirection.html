@@ -49,16 +49,15 @@
             src="https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/HeroImage.webp" width="663" height="271"
             layout="responsive" data-amp-auto-lightbox-disable></amp-img>
         <p>
-            Folder redirection is a classic feature of running a Windows Server enviroment.
-            But since it's inception, there have been new inovations leveraging
-            cloud services. OneDrive and Intune for Azure AD allows live profile syncing to any
-            device across the world. All you need is an internet connection, enabling a smooth transition
-            to working from home.
+            Folder redirection is a classic feature of running a Windows Server environment.
+            But since its inception, there have been new innovations leveraging cloud services.
+            OneDrive and Intune for Azure AD allows live profile syncing to any device across the world.
+            All you need is an internet connection, enabling a smooth transition to work from home.
         </p>
         <p>
-            If you want to upgrade to a modern version of folder redirection, you'll need to remove existing
-            redirection systems. This guide will show you how your classic folder recirecion was
-            likely set up, so you know exactly how to tear it down, for an online future.
+            If you want to upgrade to a modern version of folder redirection, you'll need to remove
+            existing redirection systems. This guide will show you how your classic folder
+            redirection was likely set up, so you know exactly how to tear it down, for an online future.
         </p>
     </div>
     <br>
@@ -68,13 +67,13 @@
         <h4>Create the folder</h4>
         <p>
             Start by creating a shared folder on the server. This is where you will be storing all
-            your user's redirected folder content. You will want to set this up close to the root, in case
-            long file names become an issue.
+            your user's redirected folder content. You will want to set this up close to the root directory,
+            in case long file names become an issue.
         </p>
         <p>
-            In our example, we wil create the directory "C:\Profile$\". The appended $ symbol sets the
-            shared folder as "hidden", so it won't show up in File Explorer lists, and must be
-            explicitly bowsed to. In this case, it also functions as the 's' in 'Profiles'.
+            In our example, we will create the directory "C:\Profile$\". The appended $ symbol sets the
+            shared folder as "hidden", so it will not show up in File Explorer lists and must be explicitly
+            browsed to. In this case, it also functions as the 's' in 'Profiles'.
         </p>
         <amp-img class="articlePicture" alt="Screenshot of completing step 1"
             src="https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/Step1.webp" width="745" height="414"
@@ -87,7 +86,7 @@
             and Creator. Then add the user group for who you want the folder redirection policy to apply.
         </p>
         <p>
-            Click the drop-down box next to Applies To, and select This Folder Only.
+            Click the drop-down box next to Applies To and select This Folder Only.
             Then click Show Advanced Permissions, and give your users the following permissions:
         </p>
         <ul>
@@ -122,7 +121,7 @@
         </p>
         <p>
             Right click the GPO and select Edit. Go to User Configuration -> Policies -> Windows Settings
-            -> Folder Redirection. Right click a folder you want to redirect, and select Properties.
+            -> Folder Redirection. Right click a folder you want to redirect and select Properties.
             In the drop-down menu next to Setting, select Basic. For Target Folder Location, select
             "Create a folder for each user under the root path". And for the Root Path, enter
             the path to your shared folder in step 1. e.g. <code>\\Server\Profile$</code>
@@ -145,7 +144,7 @@
             too.
         </p>
         <p>
-            Over time, the users computers in your OU will catch on to the changes and start
+            Over time, the user's computers in your OU will catch on to the changes and start
             moving their files over to the server in the background.
         </p>
         <p>
@@ -163,15 +162,15 @@
     <br>
 
     <div class="card">
-        <h2 id="step4">Step 4: How To Remove Folder Redirection</h2>
+        <h2 id="step4">Step 4: How to Remove Folder Redirection</h2>
         <p>
-            Now that your users have their files on the server, you'll want to move those files back to their computers
+            Now that your users have their files on the server, you will want to move those files back to their computers
             and disable the policy.
         </p>
         <p>
             Start by going back into the edit menu of the GPO, User Configuration -> Policies -> Windows Settings ->
             Folder Redirection.
-            For each of the redirected folders, right-click the folder and select Properies, then move to the Settings
+            For each of the redirected folders, right-click the folder and select Properties, then move to the Settings
             tab. In the Policy Removal section, change the selection to "Redirect the folder back[...]".
         </p>
         <p>
