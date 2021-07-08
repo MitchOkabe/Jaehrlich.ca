@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html ⚡ lang="en">
+<!-- Blog Post -->
+<!-- Created by Mitchell Jaehrlich -->
+<!-- mitch@jaehrlich.ca -->
+
+<head>
+    <meta charset="utf-8">
+    <!-- Title and Meta data for search engine optimization -->
+    <title>Secure Boot: How to enable it and prepare for Windows 11</title>
+    <meta name="Description" content="How to guide for setting up Secure Boot in preperation for Windows 11
+    system requirements">
+    <!-- Setup for AMP -->
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <link rel="canonical" href="https://www.jaehrlich.ca/Posts/04-SecureBoot/SecureBoot.html">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <!-- AMP Sidebar -->
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+
+    <!-- AMP requires style settings to be within the HTML file -->
+    <style amp-boilerplate> body { -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both; -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both; -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both; animation: -amp-start 8s steps(1, end) 0s 1 normal both } @-webkit-keyframes -amp-start { from { visibility: hidden } to { visibility: visible } } @-moz-keyframes -amp-start { from { visibility: hidden } to { visibility: visible } } @-ms-keyframes -amp-start { from { visibility: hidden } to { visibility: visible } } @-o-keyframes -amp-start { from { visibility: hidden } to { visibility: visible } } @keyframes -amp-start { from { visibility: hidden } to { visibility: visible } } </style><noscript> <style amp-boilerplate> body { -webkit-animation: none; -moz-animation: none; -ms-animation: none; animation: none } </style> </noscript> <!-- Custom CSS --> <style amp-custom> body { padding: 1em; } header { background: #0189FF; color: white; font-size: 2em; margin: -.5em; padding-bottom: .5em; } h1 { max-width: 550px; margin: auto; padding: 0.5em; background: white; box-shadow: 0px 3px 5px grey; } p { padding: 0.5em; margin: 0.5em; } #mainMenu { background: #0189FF; color: white; } #mainMenu a { text-decoration: none; color: white; margin: 0; } #mainMenu li { list-style-type: none; padding: 1em; margin-left: -2em; margin-right: 2em; } #grid { display: block; } #mainMenuLeft { float: left; padding-left: .4em; padding-top: .1em; cursor: pointer; } #mainMenuCenter { padding-left: 5em; padding-top: .25em; margin-bottom: -.25em; } .card { box-shadow: 0px 3px 5px grey; padding: 4px 16px 64px 16px; max-width: 550px; margin: auto; } button { background-color: #0189FF; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; float: left; margin: -16px 0px 0px 16px; } button a { text-decoration: none; color: white; } .articlePicture { background-color: #0189FF; } code { background-color: lightgray; font-weight: bold; font-family: monospace; } </style>
+    <link rel="shortcut icon" href="https://www.jaehrlich.ca/Pictures/J.webp">
+    <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
+</head>
+
+<body>
+    <!-- Header-->
+    <header id="grid">
+        <div id="mainMenuLeft" role="button" on="tap:mainMenu.toggle" tabindex="0" class="hamburger">☰</div>
+        <div id="mainMenuCenter">Mitch Jaehrlich</div>
+    </header>
+
+    <!-- Main Menu -->
+    <amp-sidebar id="mainMenu" layout="nodisplay" side="left">
+        <ul>
+            <li><a href="https://www.jaehrlich.ca/">Home</a></li>
+            <li><a href="https://www.jaehrlich.ca/Pages/portfolio.html">Portfolio</a></li>
+            <li><a href="https://www.jaehrlich.ca/Pages/techblog.html">Tech Blog</a></li>
+            <li><a href="https://www.jaehrlich.ca/Pages/contact.html">Contact</a></li>
+            <li><a href="https://www.jaehrlich.ca/Pages/about.html">About</a></li>
+        </ul>
+    </amp-sidebar>
+    <br><br>
+    <h1>Secure Boot: How to enable it to prepare for Windows 11</h1>
+    <br>
+    <div class="card">
+        <h2>What is Secure Boot and is it easy to enable?
+        </h2>
+        <amp-img class="articlePicture" alt="Screenshot of redirected folders being created"
+            src="https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/SecureBootHero.webp" width="2574" height="1629"
+            layout="responsive" data-amp-auto-lightbox-disable></amp-img>
+        <p>
+            Secure Boot ensures all software involved in the boot up sequence is trusted and uncompromised
+            by malware, before letting the operating system start. If Secure Boot detects an untrustworthy
+            software signature, instead of booting up, it starts system recovery. This prevents attacks on
+            important operating system files, that would otherwise make it easy for malware to bypass the 
+            dectection of antivirus software.
+        </p>
+        <p>
+            We can enable Secure Boot easily with a couple commands and a reboot. We'll be entering the BIOS
+            to make some of the changes as well.
+        </p>
+    </div>
+    <br>
+
+    <div class="card">
+        <h2 id="step1">Step 1: Reboot into Advanced Startup</h2>
+        <h4>Create the folder</h4>
+        <p>
+            If are aren't reading this on your phone, now is the time to switch over, because we are going to
+            be rebooting the computer into Advanced Startup.
+        </p>
+        <p>
+            To do this, open Settings and go to the "Update & Security" section. From there, click the "Recovery"
+            tab on the left sidebar. In here, click "Restart Now" under the "Advanced startup" header.
+        </p>
+        <amp-img class="articlePicture" alt="Screenshot of completing step 1"
+            src="https://www.jaehrlich.ca/Posts/04-SecureBoot/Pictures/AdvancedStartup.webp" width="882" height="482"
+            layout="responsive"></amp-img>
+        <p>
+            Once the computer is restarted into Advanced startup, click on "Troubleshoot", then "Advanced 
+            Options", and then "Command Prompt". At this point, the computer may restart again and you
+            will need to log in with your username and password.
+        </p>
+
+        <br><br>
+        <button>
+            <a href="#step2">Continue to Step 2</a>
+        </button>
+    </div>
+    <br>
+
+    <div class="card">
+        <h2 id="step2">Step 2: Convert your boot drive to UEFI</h2>
+
+        <p>
+            We will now use Microsoft's built-in MBR to UEFI converter. Unlike methods of the past, this
+            tool is non-destructive and will give you warnings if it's unable to complete.
+            With Command Prompt open, run this command:
+        </p>
+        <p><code>mbr2gpt /validate</code></p>
+        <p>
+            This will check to be sure we're able to continue and change the disk type to UEFI.
+            The output should look somthing like the screenshot below:
+        </p>
+
+        <amp-img class="articlePicture" alt="Screenshot of completing step 2"
+            src="https://www.jaehrlich.ca/Posts/04-SecureBoot/Pictures/mbr2gpt_validate.webp" width="480" height="197"
+            layout="responsive"></amp-img>
+
+        <p>
+            If that completed successfully, we can run the final command to convert the drive:
+        </p>
+        <p><code>mbr2gpt /convert</code></p>
+        <br> <br>
+        <button>
+            <a href="#step3">Continue to Step 3</a>
+        </button>
+    </div>
+    <br>
+
+    <div class="card">
+        <h2 id="step3">Step 3: Tell the BOIS to use UEFI instead of the Legacy boot method</h2>
+        <p>
+            Right now, your BOIS is either in one of these states: UEFI/Legacy or just Legacy mode. If it's in
+            UEFI/Legacy mode, it's possible to boot into Windows at this point, but we will still need to enable secure boot.
+            If it's in Legacy mode, we need to change it to UEFI mode first.
+        </p>
+        <p>
+            To boot into your computer's BIOS, restart the computer and rapidly press Delete, or f12, or f2. Of those keys don't work,
+            try some other f-keys until it boots into BIOS.
+        </p>
+        <p>
+            Once it's in BIOS, look around the screen and see if there is a search box. If there is, type in UEFI or Legacy to go
+            straight to the setting we need to change. Otherwise, look for the BIOS's "Boot" section to find the setting.
+        </p>
+        <amp-img class="articlePicture" alt="Screenshot of completing step 3"
+            src="https://www.jaehrlich.ca/Posts/04-SecureBoot/Pictures/UefiMode.webp" width="1164" height="850"
+            layout="responsive"></amp-img>
+        <p>
+            Change the setting so it boots in UEFI mode.
+        </p>
+        <br> <br>
+        <button>
+            <a href="#step4">Continue to Step 4</a>
+        </button>
+    </div>
+    <br>
+
+    <div class="card">
+        <h2 id="step4">Step 4: Enable Secure Boot</h2>
+        <p>
+            Now that the computer can boot again, and the prerequisites are met, we can finally enable secure boot.
+        </p>
+        <p>
+            Staying in the boot section of the BIOS, look for the secure boot setting. It simply needs to be switched from
+            disabled to enabled.
+        </p>
+        <p>
+            Once that's completed, you will need to save the settings and reboot. There will be a section in the BIOS for exiting,
+            and within that section, there will be the option along the lines of "Save and Reboot" or "Save and Exit". 
+        </p>
+        <amp-img class="articlePicture" alt="Screenshot of completing step 4"
+            src="https://www.jaehrlich.ca/Posts/04-SecureBoot/Pictures/TurnOnSecureBoot.webp" width="1072" height="592"
+            layout="responsive"></amp-img>
+    </div>
+    <br>
+
+    <div class="card">
+        <h2>Ready for Windows 11</h2>
+        <p>
+            With your boot drive converted to UEFI and Secure Boot enabled, you are one step closer to meeting the towering heights
+            of Windows 11 system requirements. Let me know how it goes and otherwise, thanks for reading!
+        </p>
+        <br>
+        <button>
+            <a href="https://www.jaehrlich.ca/Pages/contact.html">Contact Mitch</a>
+        </button>
+        <br><br><br>
+        <button>
+            <a href="https://www.jaehrlich.ca/Pages/techblog.html">Read More Blogs</a>
+        </button>
+    </div>
+
+    <!-- Structured data for rich search results -->
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "HowTo",
+            "name": "Secure Boot: How to enable it and prepare for Windows 11",
+            "description": "How to guide for converting your hard drive to UEFI mode and enabling secure boot, in preparation for Windows 11 system requirements",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/SecureBootHero.webp",
+                "width": "2574",
+                "height": "1629"
+            },
+            "step": [{
+                        "@type": "HowToStep",
+                        "url": "https://www.jaehrlich.ca/Posts/04-SecureBoot/SecureBoot.html#step1",
+                        "name": "Reboot into Advanced Startup",
+                        "itemListElement": [{
+                            "@type": "HowToDirection",
+                            "text": "Open settings and go to the Recovery section, then click on Advanced Startup."
+                        }],
+                        "image": {
+                            "@type": "ImageObject",
+                            "url": "https://www.jaehrlich.ca/Posts/04-SecureBoot/Pictures/AdvancedStartup.webp", width="882", height="482"
+                        }
+                    }, {
+                        "@type": "HowToStep",
+                        "name": "Convert your boot drive to UEFI",
+                        "url": "https://www.jaehrlich.ca/Posts/04-SecureBoot/SecureBoot.html#step2",
+                        "itemListElement": [{
+                            "@type": "HowToDirection",
+                            "text": "Use the provided command to convert your hard drive from MBR to UEFI."
+                        }],
+                        "image": {
+                            "@type": "ImageObject",
+                            "url": "https://www.jaehrlich.ca/Posts/04-SecureBoot/Pictures/mbr2gpt_validate.webp", width="480", height="197"
+                        }
+                    }, {
+                        "@type": "HowToStep",
+                        "name": "Tell the BOIS to use UEFI instead of the Legacy boot method",
+                        "url": "https://www.jaehrlich.ca/Posts/04-SecureBoot/SecureBoot.html#step3",
+                        "itemListElement": [{
+                            "@type": "HowToDirection",
+                            "text": "Switch from Legacy mode to UEFI mode to allow your computer to boot up again."
+                        }],
+                        "image": {
+                            "@type": "ImageObject",
+                            "url": "https://www.jaehrlich.ca/Posts/04-SecureBoot/Pictures/UefiMode.webp", width="1164", height="850"
+                        }
+                    }, {
+                        "@type": "HowToStep",
+                        "name": "Enable Secure Boot",
+                        "url": "https://www.jaehrlich.ca/Posts/04-SecureBoot/SecureBoot.html#step4",
+                        "itemListElement": [{
+                                    "@type": "HowToDirection",
+                                    "text": "Switch Secure Boot to enabled" } ], "
+                                    image ": { "
+                                    @type ": "
+                                    ImageObject ", "
+                                    url ": "https://www.jaehrlich.ca/Posts/04-SecureBoot/Pictures/TurnOnSecureBoot.webp", width="1072", height="592" } } ], "totalTime": "P1H" } 
+    </script></body>
+</html>
