@@ -7,12 +7,12 @@
 <head>
     <meta charset="utf-8">
     <!-- Title and Meta data for search engine optimization -->
-    <title>Secure Boot: How to enable it to prepare for Windows 11</title>
-    <meta name="Description" content="How to guide for setting up Secure Boot in preperation for Windows 11
+    <title>TPM: How to enable it to prepare for Windows 11</title>
+    <meta name="Description" content="How to guide for setting up Trusted Platform Module in preperation for Windows 11
     system requirements">
     <!-- Setup for AMP -->
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <link rel="canonical" href="https://www.jaehrlich.ca/Posts/04-SecureBoot/SecureBoot.html">
+    <link rel="canonical" href="https://www.jaehrlich.ca/Posts/05-TPM/TPM.html">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <!-- AMP Sidebar -->
     <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
@@ -41,65 +41,43 @@
         </ul>
     </amp-sidebar>
     <br><br>
-    <h1>Secure Boot: How to enable it to prepare for Windows 11</h1>
+    <h1>TPM: How to enable it to prepare for Windows 11</h1>
     <br>
     <div class="card">
-        <h2>What is Secure Boot and is it easy to enable?
+        <h2>What is Trusted Platform Module and is it easy to enable?
         </h2>
-        <amp-img class="articlePicture" alt="Screenshot of redirected folders being created"
-            src="https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/HeroImage.webp" width="663" height="271"
+        <amp-img class="articlePicture" alt="Picture of a motherboard with some chips - not actual TPM module"
+            src="https://www.jaehrlich.ca/Posts/05-TPM/Pictures/TPMHero.webp" width="720" height="480"
             layout="responsive" data-amp-auto-lightbox-disable></amp-img>
         <p>
-            Folder redirection is a classic feature of running a Windows Server environment.
-            But since its inception, there have been new innovations leveraging cloud services.
-            OneDrive and Intune for Azure AD allows live profile syncing to any device across the world.
-            All you need is an internet connection, enabling a smooth transition to work from home.
+            Trusted Platform Module (TPM) is either a physical processor on your computer's motherboard or a subsection of your main
+            processor. Whichever type of TPM your system has, it's purpose is to create unique codes
+            that can only be decoded by your TPM. The unique codes help verrify the integrety of your system by storing them and attempting to
+            recreate the codes next time. If the codes can be recreated perfectly, then everything is as secure as it was the first time the
+            code was generated.
         </p>
         <p>
-            If you want to upgrade to a modern version of folder redirection, you'll need to remove
-            existing redirection systems. This guide will show you how your classic folder
-            redirection was likely set up, so you know exactly how to tear it down, for an online future.
+            TPM takes only a couple minutes to enable, but needs to be turned on in the computer's BIOS before booting up.
+            You'll need to follow this guide on your phone.
         </p>
+        <br>
+        <button>
+            <a href="#step1">Get Started</a>
+        </button>
     </div>
     <br>
 
     <div class="card">
-        <h2 id="step1">Step 1: Create a Shared Folder on the Server</h2>
-        <h4>Create the folder</h4>
+        <h2 id="step1">Step 1: Boot into BIOS</h2>
+
         <p>
-            Start by creating a shared folder on the server. This is where you will be storing all
-            your user's redirected folder content. You will want to set this up close to the root directory,
-            in case long file names become an issue.
-        </p>
-        <p>
-            In our example, we will create the directory "C:\Profile$\". The appended $ symbol sets the
-            shared folder as "hidden", so it will not show up in File Explorer lists and must be explicitly
-            browsed to. In this case, it also functions as the 's' in 'Profiles'.
+            To start, we'll need to shutdown the computer. After it's shutdown, turn it back on and rapidly
+            press Delete, or f12, or f2 key to get it to boot into the BIOS. Of those keys don't work,
+            try some other f-keys until it boots into BIOS.
         </p>
         <amp-img class="articlePicture" alt="Screenshot of completing step 1"
-            src="https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/Step1.webp" width="745" height="414"
+            src="https://www.jaehrlich.ca/Posts/05-TPM/Pictures/BIOS.webp" width="730" height="480"
             layout="responsive"></amp-img>
-
-        <h4>Setup the folder permissions</h4>
-        <p>
-            Right-click the folder, select Properties, open the Security tab, then click Advanced. With the
-            Advanced Security Settings page open, remove access to everything, except System, Administrators,
-            and Creator. Then add the user group for who you want the folder redirection policy to apply.
-        </p>
-        <p>
-            Click the drop-down box next to Applies To and select This Folder Only.
-            Then click Show Advanced Permissions, and give your users the following permissions:
-        </p>
-        <ul>
-            <li>List Folder</li>
-            <li>Read attributes</li>
-            <li>Read extended attributes</li>
-            <li>Create Folders</li>
-            <li>Read Permissions</li>
-        </ul>
-        <p>
-            Also be sure to set the Share permissions with Full Access to the Domain Users group.
-        </p>
         <br>
         <button>
             <a href="#step2">Continue to Step 2</a>
@@ -108,96 +86,35 @@
     <br>
 
     <div class="card">
-        <h2 id="step2">Step 2: Create a Folder Redirection GPO</h2>
+        <h2 id="step2">Step 2: Find the TPM setting and enable it</h2>
 
         <p>
-            Start by opening gpedit.exe from searching the start menu.
-            Right click an OU that you want folder redirection to apply to, and
-            select Create a GPO, and give it a name.
+            If your BIOS has a search box feature, type in "TPM" or "Trust" to go directly to the TPM section.
         </p>
         <p>
-            On the Scope tab, remove Authenticated Users from Security Filtering.
-            Then add the Folder Redirection user group. And then go to the Delegation
-            tab and add Authenticated Users with Read permissions.
+            Otherwise, find the "Boot" section of the BIOS and look down the list for the TPM section.
         </p>
         <p>
-            Right click the GPO and select Edit. Go to User Configuration -> Policies -> Windows Settings
-            -> Folder Redirection. Right click a folder you want to redirect and select Properties.
-            In the drop-down menu next to Setting, select Basic. For Target Folder Location, select
-            "Create a folder for each user under the root path". And for the Root Path, enter
-            the path to your shared folder in step 1. e.g. <code>\\Server\Profile$</code>
+            Once there, switch it from disabled to enabled. Or if the options are in the form of version numbers
+            set it as high as possible.
         </p>
-
+        <p>
+            TPM is all set now. Make sure to save your BIOS settings and reboot the computer.
+        </p>
+        <br>
         <amp-img class="articlePicture" alt="Screenshot of completing step 2"
-            src="https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/Step2.webp" width="595" height="511"
-            layout="responsive"></amp-img>
-        <br> <br>
-        <button>
-            <a href="#step3">Continue to Step 3</a>
-        </button>
-    </div>
-    <br>
-
-    <div class="card">
-        <h2 id="step3">Step 3: Bask in the Glory of Folder Redirection</h2>
-        <p>
-            At this point, you have a folder ready for redirection. You may add additional folders, to be redirected,
-            too.
-        </p>
-        <p>
-            Over time, the user's computers in your OU will catch on to the changes and start
-            moving their files over to the server in the background.
-        </p>
-        <p>
-            To jump start the process, you may want to send a <code>gpupdate /force</code> via
-            Command Prompt.
-        </p>
-        <amp-img class="articlePicture" alt="Screenshot of completing step 3"
-            src="https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/Step3.webp" width="812" height="225"
-            layout="responsive"></amp-img>
-        <br> <br>
-        <button>
-            <a href="#step4">Continue to Step 4</a>
-        </button>
-    </div>
-    <br>
-
-    <div class="card">
-        <h2 id="step4">Step 4: How to Remove Folder Redirection</h2>
-        <p>
-            Now that your users have their files on the server, you will want to move those files back to their computers
-            and disable the policy.
-        </p>
-        <p>
-            Start by going back into the edit menu of the GPO, User Configuration -> Policies -> Windows Settings ->
-            Folder Redirection.
-            For each of the redirected folders, right-click the folder and select Properties, then move to the Settings
-            tab. In the Policy Removal section, change the selection to "Redirect the folder back[...]".
-        </p>
-        <p>
-            Close the edit window and move to the Delegation tab for the GPO. Remove the security group that has your
-            users.
-        </p>
-        <p>
-            And that's it. You may want to run a <code>gpedit /force</code> to kick start the removal. Either way, the
-            next time the users
-            log out and back into their profiles, the server will copy all their files back to their computer and the
-            files on the server will no longer
-            sync from the user's computers.
-        </p>
-
-        <amp-img class="articlePicture" alt="Screenshot of completing step 4"
-            src="https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/Step4.webp" width="371" height="104"
+            src="https://www.jaehrlich.ca/Posts/05-TPM/Pictures/EnableTPM.webp" width="970" height="724"
             layout="responsive"></amp-img>
     </div>
     <br>
 
     <div class="card">
-        <h2>Windows Server is No Match for Your Google-fu</h2>
+        <h2>Ready for Windows 11</h2>
         <p>
-            Thanks for reading. I hope your Folder Redirection deployment or destruction goes well. Let me know if you
-            have
-            any questions.
+            Thanks for reading! Your computer is a little more secure and ready for Windows 11. You can now use features like
+            BitLocker and device encryption. If you need to enable Secure Boot, another Windows 11 requirement,
+            head over to my guide on that here:
+            <a href="https://www.jaehrlich.ca/Posts/04-SecureBoot/SecureBoot.html">How to enable Secure Boot</a>
         </p>
         <br>
         <button>
@@ -210,6 +127,40 @@
     </div>
 
     <!-- Structured data for rich search results -->
-    <script type="application/ld+json"> { "@context": "http://schema.org", "@type": "HowTo", "name": "How to Set Up and Remove Folder Redirection", "description": "How to guide for setting up and removing folder redirection in a Windows Server network.", "image": { "@type": "ImageObject", "url": "https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/HeroImage.webp", "width": "663", "height": "271" }, "step": [ { "@type": "HowToStep", "url": "https://www.jaehrlich.ca/Posts/03-FolderRedirection/FolderRedirection.html#step1", "name": "Create a Shared Folder on the Server", "itemListElement": [ { "@type": "HowToDirection", "text": "Start by creating a shared folder on the server and create the directory 'C:\Profile$\'. Set up the user permissions with only List Folder, Read attributes, Read extended attributes, Create Folders, and Read Permissions." } ], "image": { "@type": "ImageObject", "url": "https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/Step1.webp", "height": "745", "width": "414" } }, { "@type": "HowToStep", "name": "Create a Folder Redirection GPO", "url": "https://www.jaehrlich.ca/Posts/03-FolderRedirection/FolderRedirection.html#step2", "itemListElement": [ { "@type": "HowToDirection", "text": "Create a new GPO. Remove Authenticated Users from Security Filtering, add the Folder Redirection user group and add Authenticated Users with Read permissions to the Delegations tab. User Configuration -> Policies -> Windows Settings -> Folder Redirection. Set it to Basic redirection, and target the folder created in step 1." } ], "image": { "@type": "ImageObject", "url": "https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/Step2.webp", "height": "595", "width": "511" } }, { "@type": "HowToStep", "name": "Bask in the Glory of Folder Redirection", "url": "https://www.jaehrlich.ca/Posts/03-FolderRedirection/FolderRedirection.html#step3", "itemListElement": [ { "@type": "HowToDirection", "text": "At this point, you have a folder ready for redirection, but you may want to add additional folders. Send a 'gpupdate /force' to jump-start the process on a comptuer." } ], "image": { "@type": "ImageObject", "url": "https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/Step3.webp", "height": "812", "width": "225" } }, { "@type": "HowToStep", "name": "How To Remove Folder Redirection", "url": "https://www.jaehrlich.ca/Posts/03-FolderRedirection/FolderRedirection.html#step4", "itemListElement": [ { "@type": "HowToDirection", "text": "Start by going back into the edit menu of the GPO, User Configuration -> Policies -> Windows Settings -> Folder Redirection. For each of the redirected folders, right-click the folder and select Properies, then move to the Settings tab. In the Policy Removal section, change the selection to "Redirect the folder back[...]. Close the edit window and move to the Delegation tab for the GPO. Remove the security group that has your users." } ], "image": { "@type": "ImageObject", "url": "https://www.jaehrlich.ca/Posts/03-FolderRedirection/Pictures/Step4.webp", "height": "371", "width": "104" } } ], "totalTime": "P1H" } </script>
-    </body>
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "HowTo",
+            "name": "TPM: How to enable it to prepare for Windows 11",
+            "description": "How to guide for setting up Trusted Platform Module in preperation for Windows 11 system requirements",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://www.jaehrlich.ca/Posts/05-TPM/Pictures/TPMHero.webp", "width":"720", "height":"480"
+            },
+            "step": [{
+                        "@type": "HowToStep",
+                        "url": "https://www.jaehrlich.ca/Posts/05-TPM/TPM.html#step1",
+                        "name": "Boot into BIOS",
+                        "itemListElement": [{
+                            "@type": "HowToDirection",
+                            "text": "Restart the computer, pressing the Del key until the computer enters BIOS."
+                        }],
+                        "image": {
+                            "@type": "ImageObject",
+                            "url": "https://www.jaehrlich.ca/Posts/05-TPM/Pictures/BIOS.webp", "width":"730", "height":"480"
+                        }
+                    }, {
+                        "@type": "HowToStep",
+                        "name": "Find the TPM setting and enable it",
+                        "url": "https://www.jaehrlich.ca/Posts/05-TPM/TPM.html#step2",
+                        "itemListElement": [{
+                            "@type": "HowToDirection",
+                            "text": "Go to the Boot section of the BIOS and enable TPM."
+                        }],
+                        "image": {
+                            "@type": "ImageObject",
+                            "url": "https://www.jaehrlich.ca/Posts/05-TPM/Pictures/EnableTPM.webp", "width":"970", "height":"724"
+                        }
+                    }], "totalTime": "P10M" } 
+    </script></body>
 </html>
